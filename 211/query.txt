@@ -1,0 +1,19 @@
+https://www.dns-shop.ru/ - URL
+catalog/17a892f816404e77/noutbuki/ - URN
+?
+price=50001-70000
+&
+action=rassrockailivygoda
+&
+brand=apple
+
+const query = {
+  price: "50001-70000",
+  action: "rassrockailivygoda",
+  brand: "apple"
+}
+
+XML
+
+<name>Alex</name>
+<age>30</age>

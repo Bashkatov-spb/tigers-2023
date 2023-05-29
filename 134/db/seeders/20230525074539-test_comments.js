@@ -12,6 +12,11 @@ module.exports = {
   },
 
   async down() {
-    await Comment.destroy({ truncate: true, cascade: true });
+    await Comment.destroy({
+      truncate: {
+        cascade: true,
+        restartIdentity: true,
+      },
+    });
   },
 };

@@ -45,6 +45,11 @@ module.exports = {
   },
 
   async down() {
-    await Student.destroy({ truncate: true });
+    await Student.destroy({
+      truncate: {
+        cascade: true,
+        restartIdentity: true,
+      },
+    });
   },
 };

@@ -10,6 +10,11 @@ module.exports = {
   },
 
   async down() {
-    await Post.destroy({ truncate: true, cascade: true });
+    await Post.destroy({
+      truncate: {
+        cascade: true,
+        restartIdentity: true,
+      },
+    });
   },
 };
