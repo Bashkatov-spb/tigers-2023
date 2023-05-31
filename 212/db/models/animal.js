@@ -2,9 +2,9 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Animal extends Model {
-    static associate({ User }) {
+    static associate({ User, Type }) {
       this.belongsTo(User, { foreignKey: 'user_id' });
-      // this.belongsTo(Type, { foreignKey: 'type_id' });
+      this.belongsTo(Type, { foreignKey: 'type_id' });
     }
   }
   Animal.init(
@@ -25,14 +25,14 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
-      // type_id: {
-      //   allowNull: false,
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: 'Types',
-      //     key: 'id',
-      //   },
-      // },
+      type_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Types',
+          key: 'id',
+        },
+      },
     },
     {
       sequelize,

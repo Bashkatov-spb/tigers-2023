@@ -1,14 +1,22 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Like extends Model {
-    static associate({ User, Animal }) {
+  class Animal extends Model {
+    static associate({ User, Type }) {
       this.belongsTo(User, { foreignKey: 'user_id' });
-      this.belongsTo(Animal, { foreignKey: 'animal_id' });
+      this.belongsTo(Type, { foreignKey: 'type_id' });
     }
   }
-  Like.init(
+  Animal.init(
     {
+      name: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      image: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
       user_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
@@ -16,20 +24,22 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
-      animal_id: {
+      type_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: 'Animals',
+          model: 'Types',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
     },
     {
       sequelize,
-      modelName: 'Like',
+      modelName: 'Animal',
     }
   );
-  return Like;
+  return Animal;
 };

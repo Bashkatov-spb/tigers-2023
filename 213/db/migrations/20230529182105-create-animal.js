@@ -23,6 +23,7 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       type_id: {
         allowNull: false,
@@ -31,6 +32,7 @@ module.exports = {
           model: 'Types',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,

@@ -1,20 +1,12 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Animals', {
+    await queryInterface.createTable('Likes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      name: {
-        allowNull: false,
-        type: Sequelize.TEXT,
-      },
-      image: {
-        allowNull: false,
-        type: Sequelize.TEXT,
       },
       user_id: {
         allowNull: false,
@@ -23,14 +15,16 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
-      type_id: {
+      animal_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Types',
+          model: 'Animals',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +37,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Animals');
+    await queryInterface.dropTable('Likes');
   },
 };

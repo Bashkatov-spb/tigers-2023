@@ -2,7 +2,7 @@ const React = require('react');
 
 function AnimalItem({ animal }) {
   return (
-    <div className="card" style={{ width: '18rem', margin: '5px' }}>
+    <div data-id={animal.id} className="card" style={{ width: '18rem', margin: '5px' }}>
       <img src={animal.image} className="card-img-top" alt="animal" />
       <div className="card-body">
         <h5 className="card-title">{animal.name}</h5>
@@ -11,7 +11,13 @@ function AnimalItem({ animal }) {
           content.
         </p>
         <a href={`/animals/${animal.id}`} className="btn btn-primary">
-          Go animal page
+          Info
+        </a>
+        <button type="button" className="btn btn-danger btn-delete">
+          Delete
+        </button>
+        <a href={`/form-update-animal/${animal.id}`} className="btn btn-warning btn-">
+          Update
         </a>
       </div>
     </div>
