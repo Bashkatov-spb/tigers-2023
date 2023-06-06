@@ -1,0 +1,5 @@
+План лекции на 222:
+  - Создать http сервер на Express
+    - public, middleware, config, routes, views
+    - набор компонентов Home, Btn
+    - клиентские обработчики с фетчом

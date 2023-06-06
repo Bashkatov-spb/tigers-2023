@@ -1,0 +1,16 @@
+body {
+  background-color: tomato;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.btn {
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(2);
+  opacity: 0.2;
+}
