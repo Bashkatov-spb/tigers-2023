@@ -1,0 +1,17 @@
+body {
+  background-color: tomato;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.animals_list {
+  margin: 0 auto;
+  width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.like:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
