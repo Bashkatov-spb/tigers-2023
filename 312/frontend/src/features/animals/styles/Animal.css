@@ -1,0 +1,11 @@
+.animal__item {
+  width: 400px;
+  height: 500px;
+  background-color: tomato;
+  border-radius: 20px;
+  border: 2px solid red;
+}
+
+img {
+  width: 350px;
+}
