@@ -6,6 +6,7 @@ import * as api from '../../App/api';
 const initialState: AuthState = {
   user: undefined,
   error: undefined,
+  pending: false,
 };
 
 export const registration = createAsyncThunk('auth/registration', (value: UserAuthReg) =>
@@ -23,7 +24,14 @@ export const logOut = createAsyncThunk('auth/logout', () => api.logOutFetch());
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    clearError: (state) => {
+      state.error = undefined;
+    },
+    stopPending: (state) => {
+      state.pending = false;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(registration.fulfilled, (state, action) => {
@@ -38,11 +46,11 @@ const authSlice = createSlice({
       .addCase(authorization.rejected, (state, action) => {
         state.error = action.error.message;
       })
+      .addCase(authCheckUser.pending, (state) => {
+        state.pending = true;
+      })
       .addCase(authCheckUser.fulfilled, (state, action) => {
         state.user = action.payload;
-      })
-      .addCase(authCheckUser.rejected, (state, action) => {
-        state.error = action.error.message;
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = undefined;
@@ -53,6 +61,7 @@ const authSlice = createSlice({
   },
 });
 
+export const { clearError, stopPending } = authSlice.actions;
 export default authSlice.reducer;
 // const authReducer = (state: AuthState = initialState, action: Action): AuthState => {
 //   switch (action.type) {

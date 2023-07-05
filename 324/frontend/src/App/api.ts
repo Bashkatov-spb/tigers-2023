@@ -38,6 +38,10 @@ export const registrationFetch = async (value: UserAuthReg): Promise<User> => {
     },
     body: JSON.stringify(value),
   });
+  if (!res.ok) {
+    const data = await res.json();
+    throw new Error(data.message);
+  }
   return res.json();
 };
 
